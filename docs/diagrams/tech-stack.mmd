@@ -1,0 +1,60 @@
+flowchart TB
+    subgraph UI["UI Layer"]
+        Jinja["Jinja2\ntemplating"]
+        HTMX["HTMX\npartial updates"]
+        Alpine["Alpine.js\nclient state"]
+        Tailwind["Tailwind CSS\nstyling"]
+    end
+
+    subgraph API["API Layer"]
+        Flask["Flask 3\nrouting + WSGI"]
+        Gunicorn["Gunicorn\nWSGI server"]
+        Nginx["Nginx\nreverse proxy + SSL"]
+    end
+
+    subgraph Service["Service Layer"]
+        CSRF["Flask-WTF\nCSRF protection"]
+        Limiter["Flask-Limiter\nrate limiting"]
+        JWT["PyJWT\ntoken auth"]
+        TOTP["pyotp\nTOTP 2FA"]
+        OAuth["Authlib\nGoogle OAuth"]
+        Fernet["cryptography\nFernet encryption"]
+    end
+
+    subgraph Data["Data Layer"]
+        PG["PostgreSQL 15\nprimary database"]
+        Psycopg["psycopg2\ndriver + pooling"]
+        Redis["Redis 7\nrate limits + revocation"]
+    end
+
+    subgraph AI["AI Layer"]
+        Anthropic["Anthropic SDK\nClaude"]
+        OpenAI["OpenAI SDK\nGPT"]
+        GoogleAI["Google Generative AI\nGemini"]
+    end
+
+    subgraph Export["Export Layer"]
+        xhtml2pdf["xhtml2pdf\nPDF generation"]
+        openpyxl["openpyxl\nExcel export"]
+        Barcode["Custom Renderer\nCode128-B barcode"]
+    end
+
+    subgraph Infra["Infrastructure Layer"]
+        Docker["Docker Compose\ncontainerization"]
+        VPS["Ubuntu VPS\nhosting"]
+        LetsEncrypt["Let's Encrypt\nSSL certificates"]
+    end
+
+    UI --> API
+    API --> Service
+    Service --> Data
+    Service --> AI
+    API --> Export
+
+    style UI fill:#3b82f6,color:#fff
+    style API fill:#22c55e,color:#fff
+    style Service fill:#f59e0b,color:#fff
+    style Data fill:#f97316,color:#fff
+    style AI fill:#8b5cf6,color:#fff
+    style Export fill:#06b6d4,color:#fff
+    style Infra fill:#94a3b8,color:#fff

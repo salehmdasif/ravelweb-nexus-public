@@ -1,0 +1,59 @@
+flowchart TD
+    subgraph Client["Client Layer"]
+        Browser["Web Browser\nHTMX + Alpine.js + Tailwind"]
+        Mobile["Mobile App\nREST Client"]
+    end
+
+    subgraph AppLayer["Application Layer (Flask 3 + Gunicorn)"]
+        MW["Tenant Middleware\nbefore_request hook"]
+        Auth["auth\nLogin, Register, OAuth, OTP"]
+        Business["Business Blueprints\nSales, Purchases, Inventory,\nCustomers, Suppliers, Reports,\nEmployees, Expenses, Quotations,\nVouchers, Production, Rebates..."]
+        Admin["saas_admin\nPlatform Management\n(TOTP-protected)"]
+        MobileAPI["mobile_api\nJWT REST Endpoints"]
+        AiChat["ai_chat\nMulti-LLM Integration"]
+        Analytics["analytics\nChart Data Endpoints"]
+    end
+
+    subgraph DataLayer["Data Layer"]
+        MainDB[("Main PostgreSQL DB\nOrgs, Users, Licenses,\nAI Config, Audit")]
+        Pool["Connection Pool Registry\nOne pool per tenant"]
+        TenantA[("Tenant DB A\nProducts, Sales, Purchases...")]
+        TenantB[("Tenant DB B\nProducts, Sales, Purchases...")]
+        TenantN[("Tenant DB N")]
+        Redis[("Redis\nRate Limits + Session Revocation")]
+    end
+
+    subgraph Infra["Infrastructure"]
+        Nginx["Nginx\nReverse Proxy + SSL"]
+        Docker["Docker Compose"]
+        SMTP["SMTP\nEmail Alerts + Verification"]
+    end
+
+    subgraph LLM["LLM Providers"]
+        Anthropic["Anthropic\nClaude"]
+        OpenAI["OpenAI\nGPT"]
+        Google["Google\nGemini"]
+    end
+
+    Browser --> Nginx
+    Mobile --> Nginx
+    Nginx --> AppLayer
+    MW --> MainDB
+    Auth --> MainDB
+    Business --> Pool
+    Admin --> MainDB
+    MobileAPI --> Pool
+    AiChat --> Anthropic
+    AiChat --> OpenAI
+    AiChat --> Google
+    Pool --> TenantA
+    Pool --> TenantB
+    Pool --> TenantN
+    AppLayer --> Redis
+    AppLayer --> SMTP
+
+    style Client fill:#3b82f6,color:#fff,stroke:#1d4ed8
+    style AppLayer fill:#22c55e,color:#fff,stroke:#15803d
+    style DataLayer fill:#f97316,color:#fff,stroke:#c2410c
+    style Infra fill:#94a3b8,color:#fff,stroke:#64748b
+    style LLM fill:#8b5cf6,color:#fff,stroke:#6d28d9

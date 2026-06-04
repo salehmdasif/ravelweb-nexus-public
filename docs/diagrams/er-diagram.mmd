@@ -1,0 +1,45 @@
+erDiagram
+    organizations ||--o{ tenant_databases : "has one"
+    organizations ||--o{ users : "has many"
+    organizations ||--o{ saas_licenses : "linked to"
+    shop_requests ||--o| saas_licenses : "generates"
+    users }o--|| organizations : "belongs to"
+
+    categories ||--o{ products : "classifies"
+    suppliers ||--o{ products : "supplies"
+    suppliers ||--o{ purchase_invoices : "invoiced by"
+    suppliers ||--o{ purchase_orders : "ordered from"
+    suppliers ||--o{ supplier_return_invoices : "returns to"
+
+    customers ||--o{ sale_invoices : "buys via"
+    customers ||--o{ customer_return_invoices : "returns via"
+    customers ||--o{ due_payments : "pays via"
+    customers ||--o{ customer_rebates : "earns"
+
+    products ||--o{ sale_items : "sold in"
+    products ||--o{ purchase_items : "purchased in"
+    products ||--o{ purchase_order_items : "ordered in"
+    products ||--o{ customer_return_items : "returned in"
+    products ||--o{ supplier_return_items : "returned in"
+    products ||--o{ stock_adjustments : "adjusted via"
+    products ||--o{ production_items : "consumed in"
+
+    sale_invoices ||--o{ sale_items : "contains"
+    sale_invoices ||--o{ delivery_challans : "shipped via"
+    purchase_invoices ||--o{ purchase_items : "contains"
+    purchase_orders ||--o{ purchase_order_items : "contains"
+    purchase_orders ||--o| purchase_invoices : "received as"
+
+    customer_return_invoices ||--o{ customer_return_items : "contains"
+    supplier_return_invoices ||--o{ supplier_return_items : "contains"
+
+    delivery_challans ||--o{ delivery_challan_items : "contains"
+
+    production_orders ||--o{ production_items : "consumes"
+    rebate_rules ||--o{ customer_rebates : "applied in"
+
+    cost_categories ||--o{ expenses : "classifies"
+    roles ||--o{ users : "assigned to"
+
+    payment_methods ||--o{ sale_invoices : "used in"
+    payment_methods ||--o{ purchase_invoices : "used in"

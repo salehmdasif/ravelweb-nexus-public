@@ -1,0 +1,37 @@
+sequenceDiagram
+    participant User
+    participant Browser
+    participant Flask
+    participant TenantDB
+    participant MainDB
+
+    Note over User,MainDB: Authentication Flow
+    User->>Browser: Enter email + password
+    Browser->>Flask: POST /auth/login
+    Flask->>MainDB: Verify credentials, load org_id + db_name
+    Flask-->>Browser: Set encrypted session cookie
+    Browser-->>User: Redirect to Dashboard
+
+    Note over User,MainDB: Creating a Sale Invoice
+    User->>Browser: Click "New Sale"
+    Browser->>Flask: GET /sales/new
+    Flask->>TenantDB: Load customers, payment methods
+    Flask-->>Browser: Render new sale form
+
+    User->>Browser: Type product name in search box
+    Browser->>Flask: GET /sales/search?q=product (HTMX)
+    Flask->>TenantDB: SELECT products WHERE name ILIKE...
+    Flask-->>Browser: Return product rows (partial HTML)
+
+    User->>Browser: Select product, set quantity, submit
+    Browser->>Flask: POST /sales/new (form data + CSRF token)
+    Flask->>TenantDB: INSERT sale_invoices (trigger sets invoice_number)
+    Flask->>TenantDB: INSERT sale_items
+    Flask->>TenantDB: INSERT daily_ledger entry
+    Flask-->>Browser: Redirect to invoice detail
+
+    Note over User,MainDB: Downloading Invoice PDF
+    User->>Browser: Click "Print Invoice"
+    Browser->>Flask: GET /exports/sale-invoice/:id
+    Flask->>TenantDB: Load invoice + items + shop settings
+    Flask-->>Browser: Render PDF (xhtml2pdf, Bangla font)
