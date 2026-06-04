@@ -12,17 +12,25 @@ of Ravelweb Nexus.
 
 TERMS:
 
-1. You may view, read, and reference this repository for evaluation purposes.
+1. You may view, read, and reference this repository for evaluation,
+   learning, and inspiration purposes.
 
-2. You may not use, copy, modify, merge, publish, distribute, sublicense, or sell
-   any portion of this code in any form.
+2. You may use the ideas, concepts, and approaches demonstrated here
+   to build your own original work, provided it is not a direct copy.
 
-3. You may not use this code or documentation to build a competing product or service.
+3. You may not copy, reproduce, or replicate substantial portions of
+   this code as-is into your own projects or products.
 
-4. The full production implementation of Ravelweb Nexus is proprietary and confidential.
-   All business logic, algorithms, and trade secrets are retained by the author.
+4. You may not redistribute, sublicense, or sell this code in original
+   or modified form without explicit written permission from the author.
 
-5. This license does not grant any patent rights or trademark rights.
+5. You may not use this code to build a product or service that directly
+   competes with or replicates Ravelweb Nexus.
+
+6. The full production implementation is proprietary. All core business
+   logic and trade secrets remain confidential and are not included here.
+
+7. This license does not grant any patent rights or trademark rights.
 
 DISCLAIMER:
 
