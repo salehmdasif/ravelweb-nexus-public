@@ -1,7 +1,5 @@
 # Ravelweb Nexus
 
-> A multi-tenant SaaS business management platform for small and medium retailers.
-
 Ravelweb Nexus is a full-stack web application that replaces disconnected spreadsheets and paper
 ledgers. It covers sales, purchasing, inventory, customer due tracking, employee payroll, expenses,
 and financial reports in one place. Each customer gets a fully isolated PostgreSQL database
@@ -14,7 +12,7 @@ provisioned automatically on signup.
 
 ---
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20Now-0969da?style=for-the-badge&logo=google-chrome&logoColor=white)](https://nexus.ravelweb.com)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20Now-0969da?style=for-the-badge&logo=google-chrome&logoColor=white)](https://nexus.app.ravelweb.com)
 
 > **Demo credentials** — Username: `admin` · Password: `admin123`
 
