@@ -12,9 +12,9 @@ provisioned automatically on signup.
 
 ---
 
-[![Request Demo](https://img.shields.io/badge/Production-Request%20Demo-success?style=for-the-badge&logo=google-chrome&logoColor=white)](https://asif.ravelweb.com/#contact)
-
 > **Live Demo:** This application is currently deployed in production. Demo credentials are available upon request.
+
+[![Request Demo](https://img.shields.io/badge/Production-Request%20Demo-success?style=for-the-badge&logo=google-chrome&logoColor=white)](https://asif.ravelweb.com/#contact)
 
 ---
 
