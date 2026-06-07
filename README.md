@@ -12,9 +12,9 @@ provisioned automatically on signup.
 
 ---
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-View%20Now-0969da?style=for-the-badge&logo=google-chrome&logoColor=white)](https://nexus.app.ravelweb.com)
+![Live Demo](https://img.shields.io/badge/Live%20Demo-Available%20Upon%20Request-orange?style=for-the-badge&logo=google-chrome&logoColor=white)
 
-> **Demo credentials** — Username: `admin` · Password: `admin123`
+> **Live Demo:** This application is currently deployed in production. Demo credentials are available upon request.
 
 ---
 
